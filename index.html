@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        audio {
+            width: 900px;
+            filter: invert(0.9) hue-rotate(180deg);  
+        }
+
+        #muteBtn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+        }
+    </style>
+</head>
+<!-- BUTTON RULES-->
+<body style="background-color: black;">
+        <div id="intro" style="height:100vh; display:flex; align-items:center; justify-content:center; position: relative;">
+            <button style="background-color: white; font-size: larger; font-style: italic; " onclick="enterSite()">enter site........</button>
+        <img src="images/fire.gif" alt="fire loading gif" style="position: absolute; bottom: -150px; height: 520px; width: 1600px;">
+        </div>
+
+        <div id="main" style="display: none;">
+        <audio id="audio" loop>
+        <source src="audio/kept.mp3" type="audio/mpeg">
+    </audio>
+
+    <button style="background-color: white; font-size: larger; font-style: italic; color: darkred;" id="muteBtn" onclick="toggleMute()">mute</button>
+
+<!-- BUTTON SCRIPT-->
+
+    <script>
+    function toggleMute() {
+     const audio = document.getElementById('audio');
+     audio.muted = !audio.muted;
+     if (!audio.muted) {
+      audio.play();
+     }
+     event.target.textContent = audio.muted ? 'unmute' : 'mute';
+  }
+
+    function enterSite() {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('main').style.display = 'block';
+        document.getElementById('audio').play();
+    }
+
+    </script>
+
+<!-- START OF WEBSITE HOME PAGE-->    
+
+    <h1 style="color: white; text-align: center; font-size: 60px;"><i>You're late for church...</i></h1>
+
+    <h2 style="color: white; text-align: center; font-size: 30px;"><i>H's iPhone image archive!</i></h2>
+
+    <hr>
+
+    <img src="images/goat.PNG"
+    alt="goat on a fence"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/court-love.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+
+    <hr>
+
+    <img src="images/when-dead.JPG"
+    alt="movie screenshot"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/emo love 2.JPG"
+    alt="emo love heart emoji"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/xasthur.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/tat-lion.JPG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/painting.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/opium den.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+    
+    <img src="images/lohan-sad.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/summer.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/erotik.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <img src="images/emo love.JPG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/swan-anna.JPG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/goth.jpg"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/bathory.PNG"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <img src="images/black-tee-ps1.jpg"
+    height="500"
+    style="display: block; margin: 0 auto;">
+
+    <hr>
+
+    <p style="color: white; bottom: 10px; text-align: center; font-size: 40px;"><i>always to be continued.....</i></p>
+    
+</div>
+
+</body>
+</html>
