@@ -278,19 +278,39 @@
  </div>
 
 <script>
-const audioElement = document.querySelector('audio');
 
-// Pause when tab is hidden or user swipes away
+// AUDIO CLOSE SCRIPT FOR MOBILE SAFARI
+
+const audioElement = document.getElementById('myAudio');
+
+// Store the original source so you can re-load it later if needed
+const originalSrc = audioElement.src; 
+
+function closeAudio() {
+  audioElement.pause();
+  
+  // 1. Reset playback position
+  audioElement.currentTime = 0; 
+  
+  // 2. Clear the source attribute to force the mobile player to close
+  audioElement.removeAttribute('src'); 
+  
+  // 3. Force the audio element to process the removal
+  audioElement.load(); 
+}
+
+// Trigger when the user swipes home or switches tabs
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
-    audioElement.pause();
+    closeAudio();
   }
 });
 
-// Backup for mobile browsers on page close or background
+// Backup for mobile Safari
 window.addEventListener('pagehide', () => {
-  audioElement.pause();
+  closeAudio();
 });
+
 </script>
 
 </body>
