@@ -100,6 +100,17 @@
 
     </script>
 
+    <script>
+    window.addEventListener('pagehide', function() {
+    const audio = document.getElementById('my-audio');
+  
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+        }
+    });
+
+    </script>
 
 
     <!-- START OF WEBSITE HOME PAGE-->    
