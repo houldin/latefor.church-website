@@ -8,10 +8,21 @@
             filter: invert(0.9) hue-rotate(180deg);  
         }
 
-        #muteBtn {
+        #muteWrapper {
             position: fixed;
             top: 16px;
             right: 16px;
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        #songOfWeek {
+            color: white;
+            font-size: 14px;
+            font-style: italic;
         }
 
         body {
@@ -32,18 +43,25 @@
 </head>
 <!-- BUTTON RULES-->
 <body style="background-color: black;">
-        <div id="intro" style="height:100vh; display:flex; align-items:center; justify-content:center; position: relative;">
-            <button style="border-radius: 3px; border: 2px solid darkred; position:relative; top: -10px; background-color: white; font-size: larger; font-style: italic; color: darkred; z-index: 10;" onclick="enterSite()">enter site........</button>
-        <img src="images/fire.gif" alt="fire loading gif" style="position: absolute; bottom: -200px; height: 820px; width: 1600px;">
-        </div>
 
-        <div id="main" style="display: none;">
+<div>
+    <div id="intro_page" style="height:100vh; display:flex; align-items:center; justify-content:center; position: relative;">
+        <button style="border-radius: 3px; border: 2px solid darkred; position:relative; top: -10px; background-color: white; font-size: larger; font-style: italic; color: darkred; z-index: 10;" onclick="enterSite()">enter site........</button>
+        <img src="images/fire.gif" alt="fire loading gif" style="position: absolute; bottom: -200px; width: 100%; height: 120%; z-index: 1;">
+    </div>
+</div>
+
+    <!-- INVIS AUDIO DIV-->
+
+    <div id="main" style="display: none;">
         <audio id="audio" loop>
-        <source src="audio/Besatt.mp3" type="audio/mpeg">
-    </audio>
+            <source src="audio/Besatt.mp3" type="audio/mpeg">
+        </audio>
 
-    <button style="border-radius: 3px; border: 2px solid darkred; background-color: rgb(217, 217, 217); font-size: larger; font-style: italic; color: darkred;" id="muteBtn" onclick="toggleMute()">click here to mute</button>
-
+<div id="muteWrapper">
+    <div id="songOfWeek" style="font-size: larger;">Song of the Week: <br> Besatt - Lifelover</div>
+    <button style="font-family: 'Times New Roman', Times, serif; cursor: pointer; border-radius: 3px; border: 2px solid white; background-color: black; font-size: medium; font-style: italic; color: white" id="muteBtn" onclick="toggleMute()">Click Here to Mute</button>
+</div>
 <!-- BUTTON SCRIPT-->
 
     <script>
@@ -53,21 +71,22 @@
      if (!audio.muted) {
       audio.play();
      }
-     event.target.textContent = audio.muted ? 'click here to unmute' : 'click here to mute';
+     event.target.textContent = audio.muted ? 'Click Here to Unmute' : 'Click Here to Mute';
   }
 
     function enterSite() {
-        document.getElementById('intro').style.display = 'none';
+        document.getElementById('intro_page').style.display = 'none';
         document.getElementById('main').style.display = 'block';
         document.getElementById('audio').play();
     }
 
     </script>
 
-<!-- START OF WEBSITE HOME PAGE-->    
 
-    <h1 style="color: white; text-align: center; font-size: 70px;"><span style="color: white; -webkit-text-stroke: 1.5px darkred;"><i>You're late for church...</i></span></h1>
-    <h2 style="color: white; text-align: center; font-size: 40px;"><span style="color: white; -webkit-text-stroke: 1px darkred;"><i>H's iPhone image archive!</i></span></h2>
+
+    <!-- START OF WEBSITE HOME PAGE-->    
+
+    <h1 style="color: white; text-align: center; font-size: 70px;"><span style="color: white; -webkit-text-stroke: 1.5px darkred;"><i>You're late for church...<br> <span style="font-size: 50px;">H's iPhone image archive!</span></i></span></h1>
     <hr>
 
     <img src="images/goat.PNG"
@@ -215,7 +234,7 @@
 
     <p style="color: white; bottom: 10px; text-align: center; font-size: 35px;"><i>always to be continued.....</i></p>
     
-</div>
+ </div>
 
 </body>
 </html>
