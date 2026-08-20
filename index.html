@@ -277,5 +277,21 @@
     
  </div>
 
+<script>
+const audioElement = document.querySelector('audio');
+
+// Pause when tab is hidden or user swipes away
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    audioElement.pause();
+  }
+});
+
+// Backup for mobile browsers on page close or background
+window.addEventListener('pagehide', () => {
+  audioElement.pause();
+});
+</script>
+
 </body>
 </html>
