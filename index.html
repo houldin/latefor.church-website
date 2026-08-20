@@ -275,6 +275,7 @@
 
 <script>
   const myAudioPlayer = document.getElementById('audio');
+  const trackPath = "audio/Lake Of Fire - Nirvana.mp3"; 
 
   function closeAudio() {
     myAudioPlayer.pause();
@@ -283,16 +284,33 @@
     myAudioPlayer.load();
   }
 
-  // Watch for mobile home screen swipes
+  // Handle both leaving and returning to the webpage
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       closeAudio();
+    } else {
+      // USER RETURNED: Check if they already bypassed the intro screen
+      const mainSection = document.getElementById('main');
+      if (mainSection && mainSection.style.display === 'block') {
+        
+        // Re-inject the source path since closeAudio wiped it out
+        if (!myAudioPlayer.src || myAudioPlayer.src === "") {
+          myAudioPlayer.src = trackPath;
+          myAudioPlayer.load();
+        }
+        
+        // Auto-resume playback smoothly
+        myAudioPlayer.play().catch(error => {
+          console.log("Autoplay blocked by browser. Awaiting user interaction.", error);
+        });
+      }
     }
   });
 
-  // Mobile Safari backup
+  // Mobile Safari backup for closing
   window.addEventListener('pagehide', closeAudio);
 </script>
+
 
 
 </body>
