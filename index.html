@@ -273,14 +273,19 @@
     
  </div>
 
-<script>
+ <script>
   const myAudioPlayer = document.getElementById('audio');
   const trackPath = "audio/Lake Of Fire - Nirvana.mp3"; 
+  
+  // Create a variable to remember the track position
+  let savedTrackTime = 0; 
 
   function closeAudio() {
+    // 1. Save the exact timestamp right before pausing
+    savedTrackTime = myAudioPlayer.currentTime; 
+    
     myAudioPlayer.pause();
-    myAudioPlayer.currentTime = 0;
-    myAudioPlayer.removeAttribute('src'); // Strips the widget from the mobile OS home screen
+    myAudioPlayer.removeAttribute('src'); // Strips the widget from the home screen
     myAudioPlayer.load();
   }
 
@@ -299,6 +304,9 @@
           myAudioPlayer.load();
         }
         
+        // 2. Restore the saved timestamp back to the audio player
+        myAudioPlayer.currentTime = savedTrackTime;
+        
         // Auto-resume playback smoothly
         myAudioPlayer.play().catch(error => {
           console.log("Autoplay blocked by browser. Awaiting user interaction.", error);
@@ -310,6 +318,7 @@
   // Mobile Safari backup for closing
   window.addEventListener('pagehide', closeAudio);
 </script>
+
 
 
 
