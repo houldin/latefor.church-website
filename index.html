@@ -92,22 +92,19 @@
   }
 
     function enterSite() {
-        document.getElementById('intro_page').style.display = 'none';
-        document.getElementById('main').style.display = 'block';
-        document.getElementById('audio').play();
-    }
-
-    </script>
-
-    <script>
-    window.addEventListener('pagehide', function() {
-    const audio = document.getElementById('my-audio');
+  document.getElementById('intro_page').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
   
-    if (audio) {
-        audio.pause();
-        audio.currentTime = 0;
-        }
-    });
+  // Put the source back if the user previously swiped home and returned
+  const myAudioPlayer = document.getElementById('audio');
+  if (!myAudioPlayer.src || myAudioPlayer.src === "") {
+    myAudioPlayer.src = "audio/Lake Of Fire - Nirvana.mp3";
+    myAudioPlayer.load();
+  }
+  
+  myAudioPlayer.play();
+}
+
 
     </script>
 
@@ -277,33 +274,26 @@
  </div>
 
 <script>
-const myAudioPlayer = document.getElementById('audio');
-const trackPath = "audio/Lake Of Fire - Nirvana.mp3"; 
+  const myAudioPlayer = document.getElementById('audio');
 
-function closeAudio() {
-  myAudioPlayer.pause();
-  myAudioPlayer.currentTime = 0;
-  myAudioPlayer.removeAttribute('src'); // Strips the widget from the home screen
-  myAudioPlayer.load();
-}
-
-// Watch for home swipes
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    closeAudio();
+  function closeAudio() {
+    myAudioPlayer.pause();
+    myAudioPlayer.currentTime = 0;
+    myAudioPlayer.removeAttribute('src'); // Strips the widget from the mobile OS home screen
+    myAudioPlayer.load();
   }
-});
 
-// Safari backup
-window.addEventListener('pagehide', closeAudio);
+  // Watch for mobile home screen swipes
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      closeAudio();
+    }
+  });
 
-// IMPORTANT: Go to your enterSite() function above and add these lines 
-// right BEFORE your audio.play() line so it can play again if they return:
-if (!myAudioPlayer.src || myAudioPlayer.src === "") {
-  myAudioPlayer.src = trackPath;
-  myAudioPlayer.load();
-}
+  // Mobile Safari backup
+  window.addEventListener('pagehide', closeAudio);
 </script>
+
 
 </body>
 </html>
