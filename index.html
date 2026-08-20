@@ -42,7 +42,7 @@
         <source src="audio/Besatt.mp3" type="audio/mpeg">
     </audio>
 
-    <button style="border-radius: 3px; border: 2px solid darkred; background-color: rgb(217, 217, 217); font-size: larger; font-style: italic; color: darkred;" id="muteBtn" onclick="toggleMute()">click to mute</button>
+    <button style="border-radius: 3px; border: 2px solid darkred; background-color: rgb(217, 217, 217); font-size: larger; font-style: italic; color: darkred;" id="muteBtn" onclick="toggleMute()">click here to mute</button>
 
 <!-- BUTTON SCRIPT-->
 
@@ -53,7 +53,7 @@
      if (!audio.muted) {
       audio.play();
      }
-     event.target.textContent = audio.muted ? 'click to unmute' : 'click to mute';
+     event.target.textContent = audio.muted ? 'click here to unmute' : 'click here to mute';
   }
 
     function enterSite() {
